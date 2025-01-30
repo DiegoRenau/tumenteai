@@ -4,12 +4,11 @@
 # OS: Ubuntu 20.04 LTS, 22.04 LTS, 24.04 LTS
 # Script Version: 3.1.0
 # Run this script as root
-
 set -eu -o errexit -o pipefail -o noclobber -o nounset
-
 # -allow a command to fail with !’s side effect on errexit
 # -use return value from ${PIPESTATUS[0]}, because ! hosed $?
 ! getopt --test > /dev/null
+echo "Exit code: ${PIPESTATUS[0]}"
 if [[ ${PIPESTATUS[0]} -ne 4 ]]; then
     echo '`getopt --test` failed in this environment.'
     exit 1
